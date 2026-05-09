@@ -157,11 +157,12 @@ nav {
 .contact-link svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.5; }
 .about-content h2 { font-family: 'Lora', serif; font-size: 1.6rem; font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 1.25rem; }
 .about-content p { color: var(--text2); margin-bottom: 1rem; }
-.edu-list { margin-top: 2rem; }
-.edu-item { display: grid; grid-template-columns: 90px 1fr; gap: 1rem; padding: 0.875rem 0; border-top: 0.5px solid var(--border); }
-.edu-year { font-size: 12px; color: var(--text3); padding-top: 2px; }
-.edu-name { font-size: 14px; font-weight: 500; }
-.edu-school { font-size: 12px; color: var(--text2); }
+.edu-list { margin-top: 1.5rem; }
+.edu-section-label { font-size: 11px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; font-weight: 500; }
+.edu-item { display: grid; grid-template-columns: 110px 1fr; gap: 1rem; padding: 0.55rem 0; border-top: 0.5px solid var(--border); align-items: baseline; }
+.edu-year { font-size: 12px; color: var(--text3); font-family: "Lora", serif; }
+.edu-name { font-size: 13px; font-weight: 500; line-height: 1.5; }
+.edu-school { display: inline; font-size: 13px; color: var(--text2); font-weight: 400; }
 
 /* FOOTER */
 footer { border-top: 0.5px solid var(--border); padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; }
@@ -218,25 +219,23 @@ footer span { font-size: 12px; color: var(--text3); }
         <span class="section-sub" data-en="Urban · Spatial · Temporal" data-zh="城市 · 空间 · 时间">Urban · Spatial · Temporal</span>
       </div>
       <div class="projects-grid">
-        <div class="project-card">
+        <a href="project-1.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
           <div class="project-visual" id="proj1Visual"></div>
           <div class="project-body">
             <span class="project-tag tag-green" data-en="Remote Sensing" data-zh="遥感">Remote Sensing</span>
             <h3 data-en="Urban Functional Zone Mapping" data-zh="城市功能区制图">Urban Functional Zone Mapping</h3>
             <p data-en="Integrating VHR satellite imagery with POI data to delineate urban functional zones at fine spatial resolution using machine learning." data-zh="融合高分辨率卫星影像与兴趣点数据，利用机器学习精细刻画城市功能区边界。">Integrating VHR satellite imagery with POI data to delineate urban functional zones at fine spatial resolution using machine learning.</p>
             <div class="project-links"><a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a><a class="proj-link" href="#" data-en="Dataset" data-zh="数据集">Dataset</a></div>
-          </div>
-        </div>
-        <div class="project-card">
+          </div></a>
+        <a href="project-2.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
           <div class="project-visual" id="proj2Visual"></div>
           <div class="project-body">
             <span class="project-tag tag-blue" data-en="Urban Heat" data-zh="城市热岛">Urban Heat</span>
             <h3 data-en="Building Density & Land Surface Temperature" data-zh="建筑密度与地表温度">Building Density & Land Surface Temperature</h3>
             <p data-en="Quantifying how vertical building density shapes urban heat patterns across 36 Chinese cities using spatially explicit regression models." data-zh="利用空间显式回归模型，定量分析36个中国城市中建筑密度对城市热场格局的塑造机制。">Quantifying how vertical building density shapes urban heat patterns across 36 Chinese cities using spatially explicit regression models.</p>
             <div class="project-links"><a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a></div>
-          </div>
-        </div>
-        <div class="project-card">
+          </div></a>
+        <a href="project-3.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
           <div class="project-visual" id="proj3Visual"></div>
           <div class="project-body">
             <span class="project-tag tag-amber" data-en="Traffic" data-zh="交通">Traffic</span>
@@ -244,7 +243,7 @@ footer span { font-size: 12px; color: var(--text3); }
             <p data-en="Multi-source data fusion approach combining GPS trajectories, road networks, and POIs to detect and predict urban traffic bottlenecks." data-zh="融合GPS轨迹、路网与兴趣点的多源数据方法，检测与预测城市交通瓶颈。">Multi-source data fusion approach combining GPS trajectories, road networks, and POIs to detect and predict urban traffic bottlenecks.</p>
             <div class="project-links"><a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a><a class="proj-link" href="#" data-en="Code" data-zh="代码">Code</a></div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -325,16 +324,18 @@ footer span { font-size: 12px; color: var(--text3); }
           </div>
         </div>
         <div class="about-content">
-          <h2 data-en="Bridging remote sensing, urban science and data-driven methods" data-zh="连接遥感、城市科学与数据驱动方法">Bridging remote sensing, urban science and data-driven methods</h2>
-          <p data-en="I am a Postdoctoral Researcher at the University of Michigan, working at the intersection of urban computing, remote sensing, and spatial data science. My research focuses on understanding urban systems — their structure, function, and dynamics — through the integration of heterogeneous geospatial data sources." data-zh="我是密歇根大学的博士后研究员，研究方向位于城市计算、遥感与空间数据科学的交叉地带。我专注于通过整合异质地理空间数据来理解城市系统的结构、功能与动态演变。">I am a Postdoctoral Researcher at the University of Michigan, working at the intersection of urban computing, remote sensing, and spatial data science. My research focuses on understanding urban systems — their structure, function, and dynamics — through the integration of heterogeneous geospatial data sources.</p>
-          <p data-en="My work has been published in leading journals including Landscape and Urban Planning, Remote Sensing, Computers Environment and Urban Systems, and Environmental Health, accumulating over 800 citations with an h-index of 9." data-zh="我的研究成果发表于 Landscape and Urban Planning、Remote Sensing、Computers Environment and Urban Systems、Environmental Health 等知名期刊，累计引用超过 800 次，h 指数为 9。">My work has been published in leading journals including Landscape and Urban Planning, Remote Sensing, Computers Environment and Urban Systems, and Environmental Health, accumulating over 800 citations with an h-index of 9.</p>
+          <h2 data-en="Sensing, modeling, and understanding urban systems" data-zh="感知、建模与理解城市系统">Sensing, modeling, and understanding urban systems</h2>
+          <p data-en="My research applies spatial analysis tools, geo big data, and satellite imagery to address urban resource and environmental challenges, including traffic, air pollution, building material estimation, etc." data-zh="我的研究运用空间分析工具、地理大数据和卫星影像，解决城市资源与环境问题——包括交通、空气污染、建筑材料估算等等。">My research applies spatial analysis tools, geo big data, and satellite imagery to address urban resource and environmental challenges, including traffic, air pollution, building material estimation, etc.</p>
           <div class="edu-list">
-            <p style="font-size:12px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;" data-en="Education" data-zh="教育背景">Education</p>
-            <div class="edu-item"><div class="edu-year">2024–</div><div><p class="edu-name">Postdoctoral Research Fellow</p><p class="edu-school">University of Michigan</p></div></div>
-            <div class="edu-item"><div class="edu-year">2021–2024</div><div><p class="edu-name">Postdoc</p><p class="edu-school">University of Southern Denmark</p></div></div>
-            <div class="edu-item"><div class="edu-year">2020–2021</div><div><p class="edu-name">Postdoctoral Researcher</p><p class="edu-school">Institute of GIS and Remote Sensing, Peking University</p></div></div>
-            <div class="edu-item"><div class="edu-year">2020</div><div><p class="edu-name">Ph.D.</p><p class="edu-school">Department of Geosciences and Natural Resource Management, University of Copenhagen</p></div></div>
-            <div class="edu-item"><div class="edu-year">2015</div><div><p class="edu-name">M.Sc.</p><p class="edu-school">Chinese Academy of Sciences</p></div></div>
+            <p class="edu-section-label" data-en="Experience" data-zh="工作经历">Experience</p>
+            <div class="edu-item"><div class="edu-year">2024 — Now</div><div><p class="edu-name">Postdoctoral Research Fellow, <span class="edu-school">University of Michigan</span></p></div></div>
+            <div class="edu-item"><div class="edu-year">2021 — 2024</div><div><p class="edu-name">Postdoc, <span class="edu-school">University of Southern Denmark</span></p></div></div>
+            <div class="edu-item"><div class="edu-year">2020 — 2021</div><div><p class="edu-name">Postdoctoral Researcher, <span class="edu-school">Peking University</span></p></div></div>
+          </div>
+          <div class="edu-list" style="margin-top:1.5rem;">
+            <p class="edu-section-label" data-en="Education" data-zh="教育背景">Education</p>
+            <div class="edu-item"><div class="edu-year">2020</div><div><p class="edu-name">Ph.D. in Geosciences, <span class="edu-school">University of Copenhagen</span></p></div></div>
+            <div class="edu-item"><div class="edu-year">2015</div><div><p class="edu-name">M.Sc., <span class="edu-school">Chinese Academy of Sciences</span></p></div></div>
           </div>
         </div>
       </div>
@@ -473,6 +474,11 @@ function makeProjectSVG3() {
   function drawTraffic(){ctx.fillStyle='rgba(10,15,26,0.25)';ctx.fillRect(0,0,canvas.width,canvas.height);lines.forEach(line=>{ctx.beginPath();line.pts.forEach((pt,i)=>{const wave=Math.sin(t*line.speed*60+i*.5+line.offset)*20,x=pt.x,y=pt.y+wave;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.strokeStyle=line.color+'88';ctx.lineWidth=1.5;ctx.stroke();const progress=(t*line.speed*30+line.offset)%1,idx=Math.floor(progress*(line.pts.length-1));if(idx<line.pts.length-1){const wave=Math.sin(t*line.speed*60+idx*.5+line.offset)*20;ctx.beginPath();ctx.arc(line.pts[idx].x,line.pts[idx].y+wave,3,0,Math.PI*2);ctx.fillStyle=line.color;ctx.fill();}});t+=1;requestAnimationFrame(drawTraffic);}
   drawTraffic();
 }
+
+// ─── PROJECT CARD INNER LINKS (don't trigger card click) ───
+document.querySelectorAll('.project-card .proj-link').forEach(link => {
+  link.addEventListener('click', e => e.stopPropagation());
+});
 
 // ─── VIDEO LOADER ───
 function loadVideo(el, videoId) {
