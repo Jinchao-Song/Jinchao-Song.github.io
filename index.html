@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jinchao Song | Urban Computing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f9f8f6;
+    --bg2: #ffffff;
+    --text: #1a1a18;
+    --text2: #5a5a55;
+    --text3: #9a9a93;
+    --border: rgba(26,26,24,0.1);
+    --border2: rgba(26,26,24,0.18);
+    --accent: #2d5a3d;
+    --accent-light: #e8f0ea;
+    --accent2: #1d3a5c;
+    --accent2-light: #e5edf5;
+    --amber: #8a5c1a;
+    --amber-light: #f5ede0;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,248,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2.5rem; height: 56px;
+  }
+
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 500;
+    color: var(--text); text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 0; list-style: none; }
+  .nav-links a {
+    display: block; padding: 0 1rem; height: 56px; line-height: 56px;
+    font-size: 13px; color: var(--text2); text-decoration: none;
+    letter-spacing: 0.02em; transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .lang-toggle {
+    font-size: 12px; color: var(--text3); cursor: pointer;
+    border: 0.5px solid var(--border2); padding: 4px 10px;
+    border-radius: 20px; background: transparent;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+  }
+  .lang-toggle:hover { color: var(--text); border-color: var(--border2); background: var(--bg2); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 88vh; display: flex; align-items: center;
+    padding: 6rem 2.5rem 4rem; max-width: 1100px; margin: 0 auto;
+    gap: 5rem;
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 1.75rem;
+    font-weight: 500;
+  }
+  .badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.1; letter-spacing: -0.02em; font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--text2); }
+
+  .hero-role {
+    font-size: 15px; color: var(--text2); margin-bottom: 1.5rem;
+  }
+  .hero-role a { color: var(--accent2); text-decoration: none; }
+  .hero-role a:hover { text-decoration: underline; }
+
+  .hero-desc {
+    font-size: 15px; color: var(--text2); max-width: 520px;
+    line-height: 1.8; margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2rem; margin-bottom: 2.5rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem; font-weight: 500; line-height: 1;
+    color: var(--text); display: block;
+  }
+  .stat-label { font-size: 11px; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    padding: 9px 20px; border-radius: var(--radius);
+    font-size: 13px; font-family: 'Inter', sans-serif;
+    cursor: pointer; text-decoration: none; display: inline-flex;
+    align-items: center; gap: 6px; transition: all 0.2s; border: none;
+  }
+  .btn-primary { background: var(--text); color: var(--bg); }
+  .btn-primary:hover { opacity: 0.82; }
+  .btn-outline {
+    background: transparent; color: var(--text2);
+    border: 0.5px solid var(--border2);
+  }
+  .btn-outline:hover { background: var(--bg2); color: var(--text); }
+
+  .hero-visual {
+    width: 320px; flex-shrink: 0;
+  }
+
+  /* Animated city map visualization */
+  .city-viz {
+    width: 100%; aspect-ratio: 1;
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    position: relative; overflow: hidden;
+  }
+
+  .city-viz canvas { width: 100%; height: 100%; display: block; }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 5rem 2.5rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    display: flex; justify-content: space-between;
+    align-items: baseline; margin-bottom: 2.5rem;
+    border-bottom: 0.5px solid var(--border); padding-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem; font-weight: 400; letter-spacing: -0.01em;
+  }
+  .section-sub { font-size: 12px; color: var(--text3); }
+
+  /* ─── RESEARCH PROJECTS ─── */
+  #research { background: var(--bg2); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px; background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+  }
+
+  .project-card {
+    background: var(--bg2); padding: 0;
+    position: relative; overflow: hidden; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .project-card:hover { background: var(--bg); }
+
+  .project-visual {
+    width: 100%; height: 160px;
+    position: relative; overflow: hidden;
+  }
+
+  .project-visual canvas, .project-visual svg {
+    width: 100%; height: 100%; display: block;
+  }
+
+  .project-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+  .project-tag {
+    display: inline-block; font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 2px 8px;
+    border-radius: 20px; margin-bottom: 0.75rem; font-weight: 500;
+  }
+  .tag-green { background: var(--accent-light); color: var(--accent); }
+  .tag-blue { background: var(--accent2-light); color: var(--accent2); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+
+  .project-card h3 { font-size: 14px; font-weight: 500; line-height: 1.4; margin-bottom: 0.5rem; }
+  .project-card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+  .project-links {
+    margin-top: 1rem; display: flex; gap: 8px;
+  }
+  .proj-link {
+    font-size: 11px; color: var(--text3); text-decoration: none;
+    border: 0.5px solid var(--border); padding: 3px 10px;
+    border-radius: 20px; transition: all 0.2s;
+  }
+  .proj-link:hover { color: var(--text); border-color: var(--border2); }
+
+  /* ─── PUBLICATIONS ─── */
+  .pub-list { display: flex; flex-direction: column; gap: 0; }
+
+  .pub-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 0 1.25rem; align-items: start;
+    padding: 1.25rem 0;
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
+  }
+  .pub-item:first-child { border-top: 0.5px solid var(--border); }
+
+  .pub-year {
+    font-family: 'Lora', serif;
+    font-size: 13px; color: var(--text3); padding-top: 2px;
+  }
+
+  .pub-content { flex: 1; }
+
+  .pub-title {
+    font-size: 14px; font-weight: 500; line-height: 1.4;
+    color: var(--text); margin-bottom: 0.3rem;
+  }
+  .pub-title a { color: inherit; text-decoration: none; }
+  .pub-title a:hover { color: var(--accent2); }
+
+  .pub-authors { font-size: 12px; color: var(--text3); margin-bottom: 0.2rem; }
+  .pub-authors strong { color: var(--text2); }
+
+  .pub-venue {
+    font-size: 12px; color: var(--text2);
+    font-style: italic;
+  }
+
+  .pub-cite {
+    display: flex; flex-direction: column; align-items: flex-end;
+    gap: 4px; padding-top: 2px;
+  }
+  .cite-count {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem; font-weight: 500; color: var(--text);
+    line-height: 1;
+  }
+  .cite-label { font-size: 10px; color: var(--text3); letter-spacing: 0.06em; }
+
+  /* ─── DATA VIZ / MAP ─── */
+  #dataviz { background: var(--bg); }
+
+  .viz-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+
+  .viz-card {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+  }
+
+  .viz-header {
+    padding: 1rem 1.25rem 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .viz-title { font-size: 13px; font-weight: 500; }
+  .viz-subtitle { font-size: 11px; color: var(--text3); }
+
+  .viz-body { padding: 1rem; height: 220px; position: relative; }
+  .viz-body canvas { width: 100% !important; height: 100% !important; }
+
+  .viz-wide { grid-column: span 2; }
+  .viz-wide .viz-body { height: 240px; }
+
+  /* ─── VIDEO SECTION ─── */
+  #video { background: var(--bg2); }
+
+  .video-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+
+  .video-card {
+    background: var(--bg); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+  }
+
+  .video-wrapper {
+    position: relative; padding-top: 56.25%; /* 16:9 */
+    background: #111;
+  }
+  .video-wrapper iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; border: none;
+  }
+  .video-placeholder {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(135deg, #1a2a1e, #0d1a2e);
+    cursor: pointer; color: rgba(255,255,255,0.6); font-size: 13px;
+  }
+  .play-btn {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .play-btn svg { width: 18px; height: 18px; fill: white; margin-left: 3px; }
+  .video-placeholder:hover .play-btn { background: rgba(255,255,255,0.28); }
+
+  .video-info { padding: 1rem 1.25rem 1.25rem; }
+  .video-title { font-size: 14px; font-weight: 500; margin-bottom: 0.25rem; }
+  .video-meta { font-size: 12px; color: var(--text3); }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--bg); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
+
+  .about-avatar-wrap { position: sticky; top: 80px; }
+  .about-avatar {
+    width: 100%; aspect-ratio: 3/4; border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border); overflow: hidden;
+    background: var(--bg2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px;
+  }
+
+  .about-info { margin-top: 1.25rem; }
+  .about-name { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 500; margin-bottom: 0.2rem; }
+  .about-pos { font-size: 12px; color: var(--text2); }
+
+  .contact-links { margin-top: 1rem; display: flex; flex-direction: column; gap: 8px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--text2); text-decoration: none;
+  }
+  .contact-link:hover { color: var(--accent2); }
+  .contact-link svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.5; }
+
+  .about-content {}
+  .about-content h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.6rem; font-weight: 400;
+    letter-spacing: -0.02em; line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+  .about-content p { color: var(--text2); margin-bottom: 1rem; font-size: 15px; }
+
+  .edu-list { margin-top: 2rem; }
+  .edu-item {
+    display: grid; grid-template-columns: 90px 1fr;
+    gap: 1rem; padding: 0.875rem 0;
+    border-top: 0.5px solid var(--border);
+  }
+  .edu-year { font-size: 12px; color: var(--text3); padding-top: 2px; }
+  .edu-name { font-size: 14px; font-weight: 500; }
+  .edu-school { font-size: 12px; color: var(--text2); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg2); border-top: 0.5px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer span { font-size: 12px; color: var(--text3); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
+    .hero-visual { width: 100%; }
+    .about-grid { grid-template-columns: 1fr; }
+    .video-grid, .viz-grid { grid-template-columns: 1fr; }
+    .viz-wide { grid-column: span 1; }
+    nav { padding: 0 1.5rem; }
+    section { padding: 3.5rem 1.5rem; }
+  }
+
+  /* City animation colors */
+  .city-viz { background: #0d1b12; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Jinchao Song</a>
+  <ul class="nav-links">
+    <li><a href="#research" data-en="Research" data-zh="研究">Research</a></li>
+    <li><a href="#publications" data-en="Publications" data-zh="论文">Publications</a></li>
+    <li><a href="#dataviz" data-en="Data Viz" data-zh="数据可视化">Data Viz</a></li>
+    <li><a href="#video" data-en="Videos" data-zh="视频">Videos</a></li>
+    <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
+  </ul>
+  <button class="lang-toggle" id="langBtn">中文</button>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1100px;margin:0 auto;">
+<section style="padding:0;">
+<div class="hero">
+  <div class="hero-text fade-in">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span data-en="Postdoctoral Researcher · Urban Computing" data-zh="博士后研究员 · 城市计算">Postdoctoral Researcher · Urban Computing</span>
+    </div>
+    <h1>Jinchao<br><em>Song</em></h1>
+    <p class="hero-role">
+      <span data-en="Postdoc at" data-zh="博士后 @">Postdoc at</span>
+      <a href="https://umich.edu" target="_blank">University of Michigan</a>
+    </p>
+    <p class="hero-desc" data-en="I study urban systems through the lens of computation — fusing remote sensing, multi-source data, and spatial analysis to understand how cities grow, move, and breathe." data-zh="我从计算视角研究城市系统，融合遥感、多源数据与空间分析，探索城市的增长、流动与演变规律。">
+      I study urban systems through the lens of computation — fusing remote sensing, multi-source data, and spatial analysis to understand how cities grow, move, and breathe.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num" id="citationCounter">0</span>
+        <span class="stat-label" data-en="Citations" data-zh="引用">Citations</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">10</span>
+        <span class="stat-label">h-index</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">10</span>
+        <span class="stat-label">i10-index</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#publications" data-en="View Publications →" data-zh="查看论文 →">View Publications →</a>
+      <a class="btn btn-outline" href="mailto:jcsong@umich.edu" data-en="Get in Touch" data-zh="联系我">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-in" style="transition-delay:0.15s">
+    <div class="city-viz">
+      <canvas id="cityCanvas"></canvas>
+    </div>
+    <p style="font-size:11px;color:var(--text3);text-align:center;margin-top:8px;" data-en="Urban street network simulation" data-zh="城市路网模拟动画">Urban street network simulation</p>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- RESEARCH PROJECTS -->
+<section id="research">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2 class="section-title" data-en="Research Projects" data-zh="研究项目">Research Projects</h2>
+      <span class="section-sub" data-en="Urban · Spatial · Temporal" data-zh="城市 · 空间 · 时间">Urban · Spatial · Temporal</span>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-visual" id="proj1Visual"></div>
+        <div class="project-body">
+          <span class="project-tag tag-green" data-en="Remote Sensing" data-zh="遥感">Remote Sensing</span>
+          <h3 data-en="Urban Functional Zone Mapping" data-zh="城市功能区制图">Urban Functional Zone Mapping</h3>
+          <p data-en="Integrating VHR satellite imagery with POI data to delineate urban functional zones at fine spatial resolution using machine learning." data-zh="融合高分辨率卫星影像与兴趣点数据，利用机器学习精细刻画城市功能区边界。">Integrating VHR satellite imagery with POI data to delineate urban functional zones at fine spatial resolution using machine learning.</p>
+          <div class="project-links">
+            <a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a>
+            <a class="proj-link" href="#" data-en="Dataset" data-zh="数据集">Dataset</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-visual" id="proj2Visual"></div>
+        <div class="project-body">
+          <span class="project-tag tag-blue" data-en="Urban Heat" data-zh="城市热岛">Urban Heat</span>
+          <h3 data-en="Building Density & Land Surface Temperature" data-zh="建筑密度与地表温度">Building Density & Land Surface Temperature</h3>
+          <p data-en="Quantifying how vertical building density shapes urban heat patterns across 36 Chinese cities using spatially explicit regression models." data-zh="利用空间显式回归模型，定量分析36个中国城市中建筑密度对城市热场格局的塑造机制。">Quantifying how vertical building density shapes urban heat patterns across 36 Chinese cities using spatially explicit regression models.</p>
+          <div class="project-links">
+            <a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-visual" id="proj3Visual"></div>
+        <div class="project-body">
+          <span class="project-tag tag-amber" data-en="Traffic" data-zh="交通">Traffic</span>
+          <h3 data-en="Spatio-temporal Traffic Congestion Detection" data-zh="时空交通拥堵检测">Spatio-temporal Traffic Congestion Detection</h3>
+          <p data-en="Multi-source data fusion approach combining GPS trajectories, road networks, and POIs to detect and predict urban traffic bottlenecks." data-zh="融合GPS轨迹、路网与兴趣点的多源数据方法，检测与预测城市交通瓶颈。">Multi-source data fusion approach combining GPS trajectories, road networks, and POIs to detect and predict urban traffic bottlenecks.</p>
+          <div class="project-links">
+            <a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a>
+            <a class="proj-link" href="#" data-en="Code" data-zh="代码">Code</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" style="background:var(--bg2);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2 class="section-title" data-en="Selected Publications" data-zh="代表性论文">Selected Publications</h2>
+      <a href="https://scholar.google.com/citations?user=GwY9nlEAAAAJ" target="_blank" style="font-size:12px;color:var(--accent2);text-decoration:none;" data-en="Google Scholar ↗" data-zh="Google Scholar ↗">Google Scholar ↗</a>
+    </div>
+    <div class="pub-list">
+
+      <div class="pub-item">
+        <div class="pub-year">2020</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#" data-en="Effects of building density on land surface temperature in China: Spatial patterns and determinants" data-zh="中国建筑密度对地表温度的影响：空间格局与决定因素">Effects of building density on land surface temperature in China: Spatial patterns and determinants</a></p>
+          <p class="pub-authors"><strong>J Song</strong>, W Chen, J Zhang, K Huang, B Hou, AV Prishchepov</p>
+          <p class="pub-venue">Landscape and Urban Planning 198, 103794</p>
+        </div>
+        <div class="pub-cite">
+          <span class="cite-count">203</span>
+          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#" data-en="Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques" data-zh="融合多源数据挖掘技术识别时空交通拥堵模式及影响因素">Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques</a></p>
+          <p class="pub-authors"><strong>J Song</strong>, C Zhao, S Zhong, TAS Nielsen, AV Prishchepov</p>
+          <p class="pub-venue">Computers, Environment and Urban Systems 77, 101364</p>
+        </div>
+        <div class="pub-cite">
+          <span class="cite-count">107</span>
+          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2018</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#" data-en="Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China" data-zh="融合高分遥感影像与兴趣点绘制城市功能区：以厦门为例">Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China</a></p>
+          <p class="pub-authors"><strong>J Song</strong>, T Lin, X Li, AV Prishchepov</p>
+          <p class="pub-venue">Remote Sensing 10 (11), 1737</p>
+        </div>
+        <div class="pub-cite">
+          <span class="cite-count">134</span>
+          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#" data-en="Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach" data-zh="城市功能区细粒度人口密度监测：遥感数据融合方法">Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach</a></p>
+          <p class="pub-authors"><strong>J Song</strong> et al.</p>
+          <p class="pub-venue">Remote Sensing of Environment</p>
+        </div>
+        <div class="pub-cite">
+          <span class="cite-count">103</span>
+          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2016</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#" data-en="Urbanization and health in China, thinking at the national, local and individual levels" data-zh="中国城镇化与健康：国家、地方与个体层面的思考">Urbanization and health in China, thinking at the national, local and individual levels</a></p>
+          <p class="pub-authors">X Li, <strong>J Song</strong>, T Lin, J Dixon, G Zhang, H Ye</p>
+          <p class="pub-venue">Environmental Health 15 (Suppl 1), S32</p>
+        </div>
+        <div class="pub-cite">
+          <span class="cite-count">262</span>
+          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DATA VISUALIZATION -->
+<section id="dataviz">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2 class="section-title" data-en="Data Visualization" data-zh="数据可视化">Data Visualization</h2>
+      <span class="section-sub" data-en="Interactive research outcomes" data-zh="交互式研究成果展示">Interactive research outcomes</span>
+    </div>
+    <div class="viz-grid">
+
+      <div class="viz-card viz-wide">
+        <div class="viz-header">
+          <span class="viz-title" data-en="Citation trend 2019–2026" data-zh="引用趋势 2019–2026">Citation trend 2019–2026</span>
+          <span class="viz-subtitle" data-en="Google Scholar · Total: 1041" data-zh="Google Scholar · 总计: 1041">Google Scholar · Total: 1041</span>
+        </div>
+        <div class="viz-body"><canvas id="citationChart"></canvas></div>
+      </div>
+
+      <div class="viz-card">
+        <div class="viz-header">
+          <span class="viz-title" data-en="Research themes" data-zh="研究主题分布">Research themes</span>
+          <span class="viz-subtitle" data-en="By paper count" data-zh="按论文数量">By paper count</span>
+        </div>
+        <div class="viz-body"><canvas id="themeChart"></canvas></div>
+      </div>
+
+      <div class="viz-card">
+        <div class="viz-header">
+          <span class="viz-title" data-en="Publication venues" data-zh="发表期刊">Publication venues</span>
+          <span class="viz-subtitle" data-en="Top journals" data-zh="主要期刊">Top journals</span>
+        </div>
+        <div class="viz-body"><canvas id="venueChart"></canvas></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" style="background:var(--bg2);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2 class="section-title" data-en="Research Videos" data-zh="研究视频">Research Videos</h2>
+      <span class="section-sub" data-en="Demos & presentations" data-zh="演示与报告">Demos & presentations</span>
+    </div>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <div class="video-placeholder" onclick="loadVideo(this,'YOUR_VIDEO_ID_1')">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <span data-en="Urban Functional Zone Mapping Demo" data-zh="城市功能区制图演示">Urban Functional Zone Mapping Demo</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-title" data-en="Urban Functional Zone Mapping" data-zh="城市功能区制图">Urban Functional Zone Mapping</p>
+          <p class="video-meta" data-en="Conference presentation · 2022" data-zh="学术报告 · 2022">Conference presentation · 2022</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <div class="video-placeholder" onclick="loadVideo(this,'YOUR_VIDEO_ID_2')">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <span data-en="Traffic Pattern Analysis Visualization" data-zh="交通模式分析可视化">Traffic Pattern Analysis Visualization</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-title" data-en="Traffic Congestion Spatio-temporal Patterns" data-zh="交通拥堵时空模式分析">Traffic Congestion Spatio-temporal Patterns</p>
+          <p class="video-meta" data-en="Research demo · 2021" data-zh="研究演示 · 2021">Research demo · 2021</p>
+        </div>
+      </div>
+
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-top:1rem;" data-en="💡 Replace YOUR_VIDEO_ID_1 / _2 in the HTML with your actual YouTube video IDs." data-zh="💡 将 HTML 中的 YOUR_VIDEO_ID_1 / _2 替换为你实际的 YouTube 视频 ID。">💡 Replace YOUR_VIDEO_ID_1 / _2 in the HTML with your actual YouTube video IDs.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2 class="section-title" data-en="About" data-zh="关于我">About</h2>
+    </div>
+    <div class="about-grid">
+
+      <div class="about-avatar-wrap">
+        <div class="about-avatar">🧑‍🔬</div>
+        <div class="about-info">
+          <p class="about-name">Jinchao Song</p>
+          <p class="about-pos" data-en="Postdoctoral Researcher" data-zh="博士后研究员">Postdoctoral Researcher</p>
+          <p class="about-pos">University of Michigan</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:jcsong@umich.edu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              jcsong@umich.edu
+            </a>
+            <a class="contact-link" href="https://scholar.google.com/citations?user=GwY9nlEAAAAJ" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Google Scholar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <h2 data-en="Bridging remote sensing, urban science and data-driven methods" data-zh="连接遥感、城市科学与数据驱动方法">Bridging remote sensing, urban science and data-driven methods</h2>
+        <p data-en="I am a Postdoctoral Researcher at the University of Michigan, working at the intersection of urban computing, remote sensing, and spatial data science. My research focuses on understanding urban systems — their structure, function, and dynamics — through the integration of heterogeneous geospatial data sources." data-zh="我是密歇根大学的博士后研究员，研究方向位于城市计算、遥感与空间数据科学的交叉地带。我专注于通过整合异质地理空间数据来理解城市系统的结构、功能与动态演变。">I am a Postdoctoral Researcher at the University of Michigan, working at the intersection of urban computing, remote sensing, and spatial data science. My research focuses on understanding urban systems — their structure, function, and dynamics — through the integration of heterogeneous geospatial data sources.</p>
+        <p data-en="My work has been published in leading journals including Landscape and Urban Planning, Remote Sensing, Computers Environment and Urban Systems, and Environmental Health, accumulating over 1,000 citations with an h-index of 10." data-zh="我的研究成果发表于 Landscape and Urban Planning、Remote Sensing、Computers Environment and Urban Systems、Environmental Health 等知名期刊，累计引用超过 1000 次，h 指数为 10。">My work has been published in leading journals including Landscape and Urban Planning, Remote Sensing, Computers Environment and Urban Systems, and Environmental Health, accumulating over 1,000 citations with an h-index of 10.</p>
+
+        <div class="edu-list">
+          <p style="font-size:12px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;" data-en="Education" data-zh="教育背景">Education</p>
+          <div class="edu-item">
+            <div class="edu-year">2020–</div>
+            <div>
+              <p class="edu-name" data-en="Postdoctoral Researcher" data-zh="博士后">Postdoctoral Researcher</p>
+              <p class="edu-school">University of Michigan</p>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">—</div>
+            <div>
+              <p class="edu-name" data-en="Ph.D. in Geography / Urban Science" data-zh="地理学 / 城市科学 博士">Ph.D. in Geography / Urban Science</p>
+              <p class="edu-school" data-en="Please update with your institution" data-zh="请补充院校信息">Please update with your institution</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Jinchao Song · University of Michigan</span>
+  <span style="font-size:12px;color:var(--text3);" data-en="Built with ♥ for open science" data-zh="为开放科学而建">Built with ♥ for open science</span>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+
+// ─── LANGUAGE TOGGLE ───
+let lang = 'en';
+const langBtn = document.getElementById('langBtn');
+langBtn.addEventListener('click', () => {
+  lang = lang === 'en' ? 'zh' : 'en';
+  langBtn.textContent = lang === 'en' ? '中文' : 'English';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+});
+
+// ─── CITATION COUNTER ANIMATION ───
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = Math.ceil(target / (duration / 16));
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); }
+    else el.textContent = start;
+  }, 16);
+}
+
+// ─── FADE IN OBSERVER ───
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.contains(document.getElementById('citationCounter'))) {
+        animateCounter(document.getElementById('citationCounter'), 1041, 1200);
+      }
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── CITY CANVAS ANIMATION ───
+(function() {
+  const canvas = document.getElementById('cityCanvas');
+  const parent = canvas.parentElement;
+  canvas.width = parent.offsetWidth * 2;
+  canvas.height = parent.offsetHeight * 2;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const nodes = [];
+  const edges = [];
+  const particles = [];
+
+  // Generate grid-based city nodes
+  const cols = 8, rows = 8;
+  const padX = W * 0.08, padY = H * 0.08;
+  const cellW = (W - padX * 2) / (cols - 1);
+  const cellH = (H - padY * 2) / (rows - 1);
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const jx = (Math.random() - 0.5) * cellW * 0.3;
+      const jy = (Math.random() - 0.5) * cellH * 0.3;
+      nodes.push({
+        x: padX + c * cellW + jx,
+        y: padY + r * cellH + jy,
+        size: Math.random() * 3 + 1.5,
+        bright: Math.random() > 0.7
+      });
+    }
+  }
+
+  // Connect neighbors
+  for (let i = 0; i < nodes.length; i++) {
+    const r = Math.floor(i / cols), c = i % cols;
+    if (c < cols - 1) edges.push([i, i + 1]);
+    if (r < rows - 1) edges.push([i, i + cols]);
+    if (c < cols - 1 && r < rows - 1 && Math.random() > 0.6) edges.push([i, i + cols + 1]);
+  }
+
+  // Spawn particles
+  function spawnParticle() {
+    const edgeIdx = Math.floor(Math.random() * edges.length);
+    const [a, b] = edges[edgeIdx];
+    const rev = Math.random() > 0.5;
+    particles.push({ a: rev ? b : a, b: rev ? a : b, t: 0, speed: 0.004 + Math.random() * 0.006, color: Math.random() > 0.5 ? '#4ade80' : '#60a5fa' });
+  }
+  for (let i = 0; i < 30; i++) spawnParticle();
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Edges
+    edges.forEach(([a, b]) => {
+      ctx.beginPath();
+      ctx.moveTo(nodes[a].x, nodes[a].y);
+      ctx.lineTo(nodes[b].x, nodes[b].y);
+      ctx.strokeStyle = 'rgba(80,140,100,0.25)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+
+    // Nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+      ctx.fillStyle = n.bright ? 'rgba(160,220,180,0.9)' : 'rgba(80,140,100,0.5)';
+      ctx.fill();
+    });
+
+    // Particles
+    particles.forEach((p, i) => {
+      p.t += p.speed;
+      if (p.t >= 1) {
+        particles.splice(i, 1);
+        spawnParticle();
+        return;
+      }
+      const na = nodes[p.a], nb = nodes[p.b];
+      const x = na.x + (nb.x - na.x) * p.t;
+      const y = na.y + (nb.y - na.y) * p.t;
+      ctx.beginPath();
+      ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+      // Trail
+      for (let t = 1; t <= 4; t++) {
+        const tt = Math.max(0, p.t - t * 0.02);
+        const tx = na.x + (nb.x - na.x) * tt;
+        const ty = na.y + (nb.y - na.y) * tt;
+        ctx.beginPath();
+        ctx.arc(tx, ty, 2.5 - t * 0.4, 0, Math.PI * 2);
+        ctx.fillStyle = p.color.replace(')', `,${0.4 - t * 0.08})`).replace('rgb', 'rgba').replace('##', '#');
+        ctx.globalAlpha = 0.5 - t * 0.1;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── PROJECT VISUALS (SVG animations) ───
+function makeProjectSVG1() {
+  // Urban zone grid visualization
+  const el = document.getElementById('proj1Visual');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 300 160');
+  svg.style.background = '#0d1b2e';
+  const zones = [
+    {x:10,y:10,w:80,h:50,c:'#1e4d8c',label:'Residential'},
+    {x:100,y:10,w:60,h:50,c:'#8b2020',label:'Commercial'},
+    {x:170,y:10,w:120,h:50,c:'#1a5c30',label:'Industrial'},
+    {x:10,y:70,w:100,h:80,c:'#2d4a1e',label:'Green'},
+    {x:120,y:70,w:80,h:80,c:'#5c3d1a',label:'Mixed'},
+    {x:210,y:70,w:80,h:80,c:'#3d1a5c',label:'Transit'},
+  ];
+  zones.forEach(z => {
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',z.x); rect.setAttribute('y',z.y);
+    rect.setAttribute('width',z.w); rect.setAttribute('height',z.h);
+    rect.setAttribute('fill',z.c); rect.setAttribute('rx','4');
+    rect.setAttribute('opacity','0.8');
+    svg.appendChild(rect);
+    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+    text.setAttribute('x',z.x+z.w/2); text.setAttribute('y',z.y+z.h/2+4);
+    text.setAttribute('text-anchor','middle'); text.setAttribute('fill','rgba(255,255,255,0.7)');
+    text.setAttribute('font-size','9'); text.textContent = z.label;
+    svg.appendChild(text);
+  });
+  el.appendChild(svg);
+}
+
+function makeProjectSVG2() {
+  const el = document.getElementById('proj2Visual');
+  const canvas = document.createElement('canvas');
+  canvas.width = 600; canvas.height = 320;
+  canvas.style.background = '#0d1220';
+  el.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  // Heat map grid
+  const cols = 24, rows = 12;
+  const cw = canvas.width / cols, ch = canvas.height / rows;
+  let t = 0;
+  function drawHeat() {
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const cx = c * cw, cy = r * ch;
+        const dist = Math.sqrt(Math.pow((c - cols/2 + Math.sin(t*0.5)*3), 2) + Math.pow((r - rows/2 + Math.cos(t*0.4)*2), 2));
+        const heat = Math.max(0, 1 - dist / 10 + Math.sin(t + c*0.3 + r*0.4) * 0.15);
+        const r2 = Math.floor(heat * 255 * 0.9);
+        const g2 = Math.floor(heat * 100);
+        const b2 = Math.floor((1-heat) * 80);
+        ctx.fillStyle = `rgb(${r2},${g2},${b2})`;
+        ctx.fillRect(cx, cy, cw+1, ch+1);
+      }
+    }
+    t += 0.03;
+    requestAnimationFrame(drawHeat);
+  }
+  drawHeat();
+}
+
+function makeProjectSVG3() {
+  const el = document.getElementById('proj3Visual');
+  const canvas = document.createElement('canvas');
+  canvas.width = 600; canvas.height = 320;
+  canvas.style.background = '#0a0f1a';
+  el.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  const lines = [];
+  for (let i = 0; i < 8; i++) {
+    lines.push({
+      pts: Array.from({length: 20}, (_,j) => ({
+        x: j / 19 * canvas.width,
+        y: canvas.height/2 + (Math.random()-0.5) * canvas.height * 0.5
+      })),
+      color: i % 2 === 0 ? '#f59e0b' : '#ef4444',
+      speed: 0.01 + Math.random() * 0.02,
+      offset: Math.random() * Math.PI * 2
+    });
+  }
+
+  let t = 0;
+  function drawTraffic() {
+    ctx.fillStyle = 'rgba(10,15,26,0.25)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    lines.forEach(line => {
+      ctx.beginPath();
+      line.pts.forEach((pt, i) => {
+        const wave = Math.sin(t * line.speed * 60 + i * 0.5 + line.offset) * 20;
+        const x = pt.x, y = pt.y + wave;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = line.color + '88';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Moving dot
+      const progress = (t * line.speed * 30 + line.offset) % 1;
+      const idx = Math.floor(progress * (line.pts.length - 1));
+      if (idx < line.pts.length - 1) {
+        const wave = Math.sin(t * line.speed * 60 + idx * 0.5 + line.offset) * 20;
+        ctx.beginPath();
+        ctx.arc(line.pts[idx].x, line.pts[idx].y + wave, 3, 0, Math.PI*2);
+        ctx.fillStyle = line.color;
+        ctx.fill();
+      }
+    });
+    t += 1;
+    requestAnimationFrame(drawTraffic);
+  }
+  drawTraffic();
+}
+
+makeProjectSVG1();
+makeProjectSVG2();
+makeProjectSVG3();
+
+// ─── CHARTS ───
+window.addEventListener('load', () => {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const textColor = isDark ? '#aaa' : '#888';
+  const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+
+  Chart.defaults.font.family = 'Inter, sans-serif';
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = textColor;
+
+  // Citation bar chart
+  new Chart(document.getElementById('citationChart'), {
+    type: 'bar',
+    data: {
+      labels: ['2019','2020','2021','2022','2023','2024','2025','2026'],
+      datasets: [{
+        label: 'Citations',
+        data: [45, 95, 150, 175, 165, 165, 180, 66],
+        backgroundColor: '#2d5a3d',
+        borderRadius: 4,
+        hoverBackgroundColor: '#1d3a5c'
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: gridColor }, border: { display: false } },
+        y: { grid: { color: gridColor }, border: { display: false } }
+      }
+    }
+  });
+
+  // Theme radar/doughnut
+  new Chart(document.getElementById('themeChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Remote Sensing','Urban Heat','Traffic','Population','Health'],
+      datasets: [{
+        data: [4, 3, 3, 2, 2],
+        backgroundColor: ['#2d5a3d','#1d3a5c','#8a5c1a','#5c1a5c','#5c3d1a'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 10 } } },
+      cutout: '60%'
+    }
+  });
+
+  // Venue horizontal bar
+  new Chart(document.getElementById('venueChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Remote Sensing','L&UP','CEUS','Env. Health','Others'],
+      datasets: [{
+        data: [4, 2, 2, 1, 4],
+        backgroundColor: '#1d3a5c',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: gridColor }, border: { display: false } },
+        y: { grid: { display: false }, border: { display: false } }
+      }
+    }
+  });
+});
+
+// ─── VIDEO LOADER ───
+function loadVideo(el, videoId) {
+  const wrapper = el.parentElement;
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  iframe.allow = 'autoplay; encrypted-media';
+  iframe.allowFullscreen = true;
+  iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+  wrapper.innerHTML = '';
+  wrapper.appendChild(iframe);
+}
+
+</script>
+</body>
+</html>
