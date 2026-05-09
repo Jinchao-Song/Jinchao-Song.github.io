@@ -259,14 +259,17 @@
 
   .pub-cite {
     display: flex; flex-direction: column; align-items: flex-end;
-    gap: 4px; padding-top: 2px;
+    gap: 4px; padding-top: 4px; min-width: 90px;
   }
-  .cite-count {
-    font-family: 'Lora', serif;
-    font-size: 1.1rem; font-weight: 500; color: var(--text);
-    line-height: 1;
+  .highly-cited {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.06em; white-space: nowrap;
+    background: var(--accent-light); color: var(--accent);
+    padding: 3px 10px; border-radius: 20px;
   }
-  .cite-label { font-size: 10px; color: var(--text3); letter-spacing: 0.06em; }
+  .featured-cite {
+    background: var(--amber-light); color: var(--amber);
+  }
 
   /* ─── DATA VIZ / MAP ─── */
   #dataviz { background: var(--bg); }
@@ -417,7 +420,6 @@
   <ul class="nav-links">
     <li><a href="#research" data-en="Research" data-zh="研究">Research</a></li>
     <li><a href="#publications" data-en="Publications" data-zh="论文">Publications</a></li>
-    <li><a href="#dataviz" data-en="Data Viz" data-zh="数据可视化">Data Viz</a></li>
     <li><a href="#video" data-en="Videos" data-zh="视频">Videos</a></li>
     <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
   </ul>
@@ -447,7 +449,7 @@
         <span class="stat-label" data-en="Citations" data-zh="引用">Citations</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">9</span>
+        <span class="stat-num">10</span>
         <span class="stat-label">h-index</span>
       </div>
       <div class="stat-item">
@@ -529,111 +531,139 @@
 <section id="publications" style="background:var(--bg2);">
   <div class="section-inner fade-in">
     <div class="section-header">
-      <h2 class="section-title" data-en="Selected Publications" data-zh="代表性论文">Selected Publications</h2>
-      <a href="https://scholar.google.com/citations?user=GwY9nlEAAAAJ" target="_blank" style="font-size:12px;color:var(--accent2);text-decoration:none;" data-en="Google Scholar ↗" data-zh="Google Scholar ↗">Google Scholar ↗</a>
+      <h2 class="section-title" data-en="Publications" data-zh="学术论文">Publications</h2>
+      <a href="https://scholar.google.com/citations?user=GwY9nlEAAAAJ" target="_blank" style="font-size:12px;color:var(--accent2);text-decoration:none;">Google Scholar ↗</a>
     </div>
     <div class="pub-list">
 
       <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">Urban fabric decoded: High-precision building material identification via deep learning and remote sensing</a></p>
+          <p class="pub-authors">K Sun, Q Li, Q Liu, <strong>J Song</strong>, M Dai, X Qian, SRB Gummidi, B Yu, F Creutzig, ...</p>
+          <p class="pub-venue">Environmental Science and Ecotechnology 24, 100538</p>
+        </div>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">Spatiotemporal Characteristics of Global Building Material Intensity Revealed for Circular and Low-Carbon Construction</a></p>
+          <p class="pub-authors">Q Liu, X Ouyang, W Zhu, K Sun, X Li, Y Li, W Chen, G Liu</p>
+          <p class="pub-venue">Environmental Science & Technology 59 (46), 24786–24796</p>
+        </div>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">A global dataset for steel, aluminum and cement in-use stocks at 500 m gridded level 2000–2019</a></p>
+          <p class="pub-authors">K Sun, Q Li, M Dai, H Guo, Q Liu, <strong>J Song</strong>, Z Chen, SRB Gummidi, W Chen, ...</p>
+          <p class="pub-venue">Scientific Data 12 (1), 1580</p>
+        </div>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
         <div class="pub-year">2020</div>
         <div class="pub-content">
-          <p class="pub-title"><a href="#" data-en="Effects of building density on land surface temperature in China: Spatial patterns and determinants" data-zh="中国建筑密度对地表温度的影响：空间格局与决定因素">Effects of building density on land surface temperature in China: Spatial patterns and determinants</a></p>
+          <p class="pub-title"><a href="#">Effects of building density on land surface temperature in China: Spatial patterns and determinants</a></p>
           <p class="pub-authors"><strong>J Song</strong>, W Chen, J Zhang, K Huang, B Hou, AV Prishchepov</p>
           <p class="pub-venue">Landscape and Urban Planning 198, 103794</p>
         </div>
-        <div class="pub-cite">
-          <span class="cite-count">203</span>
-          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
-        </div>
+        <div class="pub-cite"><span class="highly-cited" data-en="Highly Cited" data-zh="高引">Highly Cited</span></div>
       </div>
 
       <div class="pub-item">
         <div class="pub-year">2019</div>
         <div class="pub-content">
-          <p class="pub-title"><a href="#" data-en="Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques" data-zh="融合多源数据挖掘技术识别时空交通拥堵模式及影响因素">Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques</a></p>
+          <p class="pub-title"><a href="#">Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques</a></p>
           <p class="pub-authors"><strong>J Song</strong>, C Zhao, S Zhong, TAS Nielsen, AV Prishchepov</p>
           <p class="pub-venue">Computers, Environment and Urban Systems 77, 101364</p>
         </div>
-        <div class="pub-cite">
-          <span class="cite-count">107</span>
-          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach</a></p>
+          <p class="pub-authors"><strong>J Song</strong>, X Tong, L Wang, C Zhao, AV Prishchepov</p>
+          <p class="pub-venue">Landscape and Urban Planning 190, 103580</p>
         </div>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">Spatio-temporal patterns of traffic-related air pollutant emissions in different urban functional zones estimated by real-time video and deep learning technique</a></p>
+          <p class="pub-authors"><strong>J Song</strong>, C Zhao, S Zhong, X Li, AV Prishchepov</p>
+          <p class="pub-venue">Journal of Cleaner Production 238, 117881</p>
+        </div>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">Analysis of the relationship between electromagnetic radiation characteristics and urban functions in highly populated urban areas</a></p>
+          <p class="pub-authors">C Tang, Y Yang, RS Cai, H Ye, L Duan, Z Zhang, Z Shi, K Lin, <strong>J Song</strong>, ...</p>
+          <p class="pub-venue">Science of the Total Environment 654, 535–540</p>
+        </div>
+        <div class="pub-cite"></div>
       </div>
 
       <div class="pub-item">
         <div class="pub-year">2018</div>
         <div class="pub-content">
-          <p class="pub-title"><a href="#" data-en="Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China" data-zh="融合高分遥感影像与兴趣点绘制城市功能区：以厦门为例">Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China</a></p>
+          <p class="pub-title"><a href="#">Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China</a></p>
           <p class="pub-authors"><strong>J Song</strong>, T Lin, X Li, AV Prishchepov</p>
           <p class="pub-venue">Remote Sensing 10 (11), 1737</p>
         </div>
-        <div class="pub-cite">
-          <span class="cite-count">134</span>
-          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
-        </div>
+        <div class="pub-cite"></div>
       </div>
 
       <div class="pub-item">
-        <div class="pub-year">2019</div>
+        <div class="pub-year">2018</div>
         <div class="pub-content">
-          <p class="pub-title"><a href="#" data-en="Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach" data-zh="城市功能区细粒度人口密度监测：遥感数据融合方法">Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach</a></p>
-          <p class="pub-authors"><strong>J Song</strong> et al.</p>
-          <p class="pub-venue">Remote Sensing of Environment</p>
+          <p class="pub-title"><a href="#">Urban waterlogging risk assessment based on internet open data: A case study in China</a></p>
+          <p class="pub-authors">T Lin, X Liu, J Song, G Zhang, Y Jia, Z Tu, Z Zheng, C Liu</p>
+          <p class="pub-venue">Habitat International 71, 88–96</p>
         </div>
-        <div class="pub-cite">
-          <span class="cite-count">103</span>
-          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
+        <div class="pub-cite"></div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2018</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">The role of climate, construction quality, microclimate, and socio-economic conditions on carbon emissions from office buildings in China</a></p>
+          <p class="pub-authors">H Ye, Q Ren, L Shi, J Song, X Hu, X Lu, G Zhang, T Lin, X Xue</p>
+          <p class="pub-venue">Journal of Cleaner Production 171, 911–916</p>
         </div>
+        <div class="pub-cite"></div>
       </div>
 
       <div class="pub-item">
         <div class="pub-year">2016</div>
         <div class="pub-content">
-          <p class="pub-title"><a href="#" data-en="Urbanization and health in China, thinking at the national, local and individual levels" data-zh="中国城镇化与健康：国家、地方与个体层面的思考">Urbanization and health in China, thinking at the national, local and individual levels</a></p>
+          <p class="pub-title"><a href="#">Urbanization and health in China, thinking at the national, local and individual levels</a></p>
           <p class="pub-authors">X Li, <strong>J Song</strong>, T Lin, J Dixon, G Zhang, H Ye</p>
           <p class="pub-venue">Environmental Health 15 (Suppl 1), S32</p>
         </div>
-        <div class="pub-cite">
-          <span class="cite-count">262</span>
-          <span class="cite-label" data-en="cited" data-zh="引用">cited</span>
-        </div>
+        <div class="pub-cite"></div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- DATA VISUALIZATION -->
-<section id="dataviz">
-  <div class="section-inner fade-in">
-    <div class="section-header">
-      <h2 class="section-title" data-en="Data Visualization" data-zh="数据可视化">Data Visualization</h2>
-      <span class="section-sub" data-en="Interactive research outcomes" data-zh="交互式研究成果展示">Interactive research outcomes</span>
-    </div>
-    <div class="viz-grid">
-
-      <div class="viz-card viz-wide">
-        <div class="viz-header">
-          <span class="viz-title" data-en="Citation trend 2019–2026" data-zh="引用趋势 2019–2026">Citation trend 2019–2026</span>
-          <span class="viz-subtitle" data-en="Google Scholar · Total: 1041" data-zh="Google Scholar · 总计: 1041">Google Scholar · Total: 1041</span>
+      <div class="pub-item">
+        <div class="pub-year">2015</div>
+        <div class="pub-content">
+          <p class="pub-title"><a href="#">A method of extracting urban built-up area based on DMSP/OLS nighttime data and Google Earth</a></p>
+          <p class="pub-authors">S Jinchao, L Xinhu, L Tao, Z Guoyin, YE Hong, HE Xiaoyan, GE Rubing</p>
+          <p class="pub-venue">Journal of Geo-information Science 17 (8), 750–756</p>
         </div>
-        <div class="viz-body"><canvas id="citationChart"></canvas></div>
-      </div>
-
-      <div class="viz-card">
-        <div class="viz-header">
-          <span class="viz-title" data-en="Research themes" data-zh="研究主题分布">Research themes</span>
-          <span class="viz-subtitle" data-en="By paper count" data-zh="按论文数量">By paper count</span>
-        </div>
-        <div class="viz-body"><canvas id="themeChart"></canvas></div>
-      </div>
-
-      <div class="viz-card">
-        <div class="viz-header">
-          <span class="viz-title" data-en="Publication venues" data-zh="发表期刊">Publication venues</span>
-          <span class="viz-subtitle" data-en="Top journals" data-zh="主要期刊">Top journals</span>
-        </div>
-        <div class="viz-body"><canvas id="venueChart"></canvas></div>
+        <div class="pub-cite"></div>
       </div>
 
     </div>
@@ -741,7 +771,6 @@
 </footer>
 
 <!-- SCRIPTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
 
 // ─── LANGUAGE TOGGLE ───
@@ -772,7 +801,7 @@ const observer = new IntersectionObserver(entries => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
       if (e.target.contains(document.getElementById('citationCounter'))) {
-        animateCounter(document.getElementById('citationCounter'), 798, 1200);
+        animateCounter(document.getElementById('citationCounter'), 1041, 1200);
       }
     }
   });
@@ -1001,80 +1030,6 @@ function makeProjectSVG3() {
 makeProjectSVG1();
 makeProjectSVG2();
 makeProjectSVG3();
-
-// ─── CHARTS ───
-window.addEventListener('load', () => {
-  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const textColor = isDark ? '#aaa' : '#888';
-  const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
-
-  Chart.defaults.font.family = 'Inter, sans-serif';
-  Chart.defaults.font.size = 11;
-  Chart.defaults.color = textColor;
-
-  // Citation bar chart
-  new Chart(document.getElementById('citationChart'), {
-    type: 'bar',
-    data: {
-      labels: ['2019','2020','2021','2022','2023','2024','2025','2026'],
-      datasets: [{
-        label: 'Citations',
-        data: [45, 95, 150, 175, 165, 165, 180, 66],
-        backgroundColor: '#2d5a3d',
-        borderRadius: 4,
-        hoverBackgroundColor: '#1d3a5c'
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: gridColor }, border: { display: false } },
-        y: { grid: { color: gridColor }, border: { display: false } }
-      }
-    }
-  });
-
-  // Theme radar/doughnut
-  new Chart(document.getElementById('themeChart'), {
-    type: 'doughnut',
-    data: {
-      labels: ['Remote Sensing','Urban Heat','Traffic','Population','Health'],
-      datasets: [{
-        data: [4, 3, 3, 2, 2],
-        backgroundColor: ['#2d5a3d','#1d3a5c','#8a5c1a','#5c1a5c','#5c3d1a'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 10 } } },
-      cutout: '60%'
-    }
-  });
-
-  // Venue horizontal bar
-  new Chart(document.getElementById('venueChart'), {
-    type: 'bar',
-    data: {
-      labels: ['Remote Sensing','L&UP','CEUS','Env. Health','Others'],
-      datasets: [{
-        data: [4, 2, 2, 1, 4],
-        backgroundColor: '#1d3a5c',
-        borderRadius: 4
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: gridColor }, border: { display: false } },
-        y: { grid: { display: false }, border: { display: false } }
-      }
-    }
-  });
-});
 
 // ─── VIDEO LOADER ───
 function loadVideo(el, videoId) {
