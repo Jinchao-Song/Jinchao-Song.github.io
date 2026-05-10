@@ -104,11 +104,12 @@ nav {
 .section-sub { font-size: 13px; color: var(--text2); }
 
 /* RESEARCH */
-.projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
 .project-card { background: var(--bg2); cursor: pointer; transition: background 0.2s; }
 .project-card:nth-child(1) { background: linear-gradient(180deg, #f0f7f1 0%, #ffffff 60%); }
-.project-card:nth-child(2) { background: linear-gradient(180deg, #f0f4fa 0%, #ffffff 60%); }
-.project-card:nth-child(3) { background: linear-gradient(180deg, #faf5ed 0%, #ffffff 60%); }
+.project-card:nth-child(2) { background: linear-gradient(180deg, #faf5ed 0%, #ffffff 60%); }
+.project-card:nth-child(3) { background: linear-gradient(180deg, #f0f4fa 0%, #ffffff 60%); }
+.project-card:nth-child(4) { background: linear-gradient(180deg, #faf0ed 0%, #ffffff 60%); }
 .project-card:hover { background: var(--bg); }
 .project-visual { width: 100%; height: 160px; position: relative; overflow: hidden; }
 .project-visual canvas, .project-visual svg { width: 100%; height: 100%; display: block; }
@@ -117,6 +118,7 @@ nav {
 .tag-green { background: var(--accent-light); color: var(--accent); }
 .tag-blue  { background: var(--accent2-light); color: var(--accent2); }
 .tag-amber { background: var(--amber-light); color: var(--amber); }
+.tag-coral { background: #fbe9e2; color: #a04a2a; }
 .project-card h3 { font-size: 15px; font-weight: 500; line-height: 1.4; margin-bottom: 0.5rem; }
 .project-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
 .project-links { margin-top: 1rem; display: flex; gap: 8px; }
@@ -231,24 +233,32 @@ footer span { font-size: 12px; color: var(--text3); }
           <div class="project-body">
             <span class="project-tag tag-green" data-en="Remote Sensing" data-zh="遥感">Remote Sensing</span>
             <h3 data-en="Urban Functional Zone Mapping" data-zh="城市功能区制图">Urban Functional Zone Mapping</h3>
-            <p data-en="Integrating VHR satellite imagery with POI data to delineate urban functional zones at fine spatial resolution using machine learning." data-zh="融合高分辨率卫星影像与兴趣点数据，利用机器学习精细刻画城市功能区边界。">Integrating VHR satellite imagery with POI data to delineate urban functional zones at fine spatial resolution using machine learning.</p>
-            <div class="project-links"><a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a><a class="proj-link" href="#" data-en="Dataset" data-zh="数据集">Dataset</a></div>
+            <p data-en="Mapping urban functional zones across multiple scales: from Xiamen city, to coastal resorts in Mexico, and globally." data-zh="多尺度城市功能区制图：从厦门、墨西哥海岸度假区到全球尺度。">Mapping urban functional zones across multiple scales: from Xiamen city, to coastal resorts in Mexico, and globally.</p>
+            <div class="project-links"><span class="proj-link">Xiamen</span><span class="proj-link">Mexico</span><span class="proj-link">Global</span></div>
           </div></a>
         <a href="project-2.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
+          <div class="project-visual" id="proj3Visual"></div>
+          <div class="project-body">
+            <span class="project-tag tag-amber" data-en="Transport & Environment" data-zh="交通与环境">Transport & Environment</span>
+            <h3 data-en="Transportation and Urban Environment" data-zh="交通与城市环境">Transportation and Urban Environment</h3>
+            <p data-en="Detecting traffic congestion patterns and estimating vehicle emissions using video-based recognition and multi-source urban data." data-zh="基于交通路况检测拥堵模式，并通过视频车辆识别估算汽车排放。">Detecting traffic congestion patterns and estimating vehicle emissions using video-based recognition and multi-source urban data.</p>
+            <div class="project-links"><span class="proj-link">Congestion</span><span class="proj-link">Emissions</span></div>
+          </div></a>
+        <a href="project-3.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
           <div class="project-visual" id="proj2Visual"></div>
           <div class="project-body">
             <span class="project-tag tag-blue" data-en="Urban Heat" data-zh="城市热岛">Urban Heat</span>
-            <h3 data-en="Building Density & Land Surface Temperature" data-zh="建筑密度与地表温度">Building Density & Land Surface Temperature</h3>
-            <p data-en="Quantifying how vertical building density shapes urban heat patterns across 36 Chinese cities using spatially explicit regression models." data-zh="利用空间显式回归模型，定量分析36个中国城市中建筑密度对城市热场格局的塑造机制。">Quantifying how vertical building density shapes urban heat patterns across 36 Chinese cities using spatially explicit regression models.</p>
-            <div class="project-links"><a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a></div>
+            <h3 data-en="Urban Heat Island" data-zh="城市热岛效应">Urban Heat Island</h3>
+            <p data-en="Quantifying how building density shapes land surface temperature across 36 Chinese cities using spatially explicit regression models." data-zh="利用空间回归模型，定量分析建筑密度对36个中国城市地表温度的塑造机制。">Quantifying how building density shapes land surface temperature across 36 Chinese cities using spatially explicit regression models.</p>
+            <div class="project-links"><span class="proj-link">36 Cities</span><span class="proj-link">LST</span></div>
           </div></a>
-        <a href="project-3.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
-          <div class="project-visual" id="proj3Visual"></div>
+        <a href="project-4.html" class="project-card" style="text-decoration:none;color:inherit;display:block;">
+          <div class="project-visual" id="proj4Visual"></div>
           <div class="project-body">
-            <span class="project-tag tag-amber" data-en="Traffic" data-zh="交通">Traffic</span>
-            <h3 data-en="Spatio-temporal Traffic Congestion Detection" data-zh="时空交通拥堵检测">Spatio-temporal Traffic Congestion Detection</h3>
-            <p data-en="Multi-source data fusion approach combining GPS trajectories, road networks, and POIs to detect and predict urban traffic bottlenecks." data-zh="融合GPS轨迹、路网与兴趣点的多源数据方法，检测与预测城市交通瓶颈。">Multi-source data fusion approach combining GPS trajectories, road networks, and POIs to detect and predict urban traffic bottlenecks.</p>
-            <div class="project-links"><a class="proj-link" href="#" data-en="Paper →" data-zh="论文 →">Paper →</a><a class="proj-link" href="#" data-en="Code" data-zh="代码">Code</a></div>
+            <span class="project-tag tag-coral" data-en="Sustainability" data-zh="可持续发展">Sustainability</span>
+            <h3 data-en="Global Building Material Estimation" data-zh="全球建筑材料估算">Global Building Material Estimation</h3>
+            <p data-en="Mapping global stocks of steel, aluminum, and cement at fine spatial resolution to inform circular and low-carbon construction." data-zh="制图全球建筑钢材、铝、水泥的细粒度存量分布，服务循环与低碳建筑发展。">Mapping global stocks of steel, aluminum, and cement at fine spatial resolution to inform circular and low-carbon construction.</p>
+            <div class="project-links"><span class="proj-link">Global</span><span class="proj-link">500m grid</span></div>
           </div>
         </a>
       </div>
@@ -398,7 +408,7 @@ function showPanel(id) {
   // Init project visuals on first visit
   if (id === 'research' && !window._projInit) {
     window._projInit = true;
-    setTimeout(() => { makeProjectSVG1(); makeProjectSVG2(); makeProjectSVG3(); }, 50);
+    setTimeout(() => { makeProjectSVG1(); makeProjectSVG2(); makeProjectSVG3(); makeProjectSVG4(); }, 50);
   }
 
   // Animate counter on home
@@ -480,10 +490,11 @@ function makeProjectSVG1() {
 }
 function makeProjectSVG2() {
   const el=document.getElementById('proj2Visual'); if(!el||el.children.length) return;
-  const canvas=document.createElement('canvas'); canvas.width=600;canvas.height=320;canvas.style.background='#0d1220';el.appendChild(canvas);
-  const ctx=canvas.getContext('2d'),cols=24,rows=12,cw=canvas.width/cols,ch=canvas.height/rows;let t=0;
-  function drawHeat(){for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const cx=c*cw,cy=r*ch,dist=Math.sqrt(Math.pow(c-cols/2+Math.sin(t*.5)*3,2)+Math.pow(r-rows/2+Math.cos(t*.4)*2,2)),heat=Math.max(0,1-dist/10+Math.sin(t+c*.3+r*.4)*.15);ctx.fillStyle=`rgb(${Math.floor(heat*255*.9)},${Math.floor(heat*100)},${Math.floor((1-heat)*80)})`;ctx.fillRect(cx,cy,cw+1,ch+1);}t+=.03;requestAnimationFrame(drawHeat);}
-  drawHeat();
+  const img=document.createElement('img');
+  img.src='heat-map.gif';
+  img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+  img.alt='Global temperature animation';
+  el.appendChild(img);
 }
 function makeProjectSVG3() {
   const el=document.getElementById('proj3Visual'); if(!el||el.children.length) return;
@@ -493,6 +504,37 @@ function makeProjectSVG3() {
   let t=0;
   function drawTraffic(){ctx.fillStyle='rgba(10,15,26,0.25)';ctx.fillRect(0,0,canvas.width,canvas.height);lines.forEach(line=>{ctx.beginPath();line.pts.forEach((pt,i)=>{const wave=Math.sin(t*line.speed*60+i*.5+line.offset)*20,x=pt.x,y=pt.y+wave;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.strokeStyle=line.color+'88';ctx.lineWidth=1.5;ctx.stroke();const progress=(t*line.speed*30+line.offset)%1,idx=Math.floor(progress*(line.pts.length-1));if(idx<line.pts.length-1){const wave=Math.sin(t*line.speed*60+idx*.5+line.offset)*20;ctx.beginPath();ctx.arc(line.pts[idx].x,line.pts[idx].y+wave,3,0,Math.PI*2);ctx.fillStyle=line.color;ctx.fill();}});t+=1;requestAnimationFrame(drawTraffic);}
   drawTraffic();
+}
+
+function makeProjectSVG4() {
+  const el=document.getElementById('proj4Visual'); if(!el||el.children.length) return;
+  const canvas=document.createElement('canvas');canvas.width=600;canvas.height=320;canvas.style.background='#1a1410';el.appendChild(canvas);
+  const ctx=canvas.getContext('2d');
+  // Building blocks growing/shrinking like a city skyline
+  const buildings = [];
+  const numB = 40;
+  for(let i=0;i<numB;i++) buildings.push({x:i*(canvas.width/numB),w:canvas.width/numB-2,baseH:50+Math.random()*180,phase:Math.random()*Math.PI*2,speed:0.01+Math.random()*0.02,color:['#d4a574','#b8773f','#8a5530','#a86a3d'][Math.floor(Math.random()*4)]});
+  let t=0;
+  function drawCity(){
+    ctx.fillStyle='rgba(26,20,16,0.2)';ctx.fillRect(0,0,canvas.width,canvas.height);
+    buildings.forEach(b=>{
+      const h=b.baseH+Math.sin(t*b.speed*60+b.phase)*30;
+      ctx.fillStyle=b.color;
+      ctx.globalAlpha=0.85;
+      ctx.fillRect(b.x,canvas.height-h,b.w,h);
+      // windows
+      ctx.fillStyle='rgba(255,220,150,0.4)';
+      for(let wy=canvas.height-h+10;wy<canvas.height-10;wy+=12){
+        for(let wx=b.x+3;wx<b.x+b.w-3;wx+=6){
+          if(Math.random()>0.6) ctx.fillRect(wx,wy,3,4);
+        }
+      }
+      ctx.globalAlpha=1;
+    });
+    t+=1;
+    requestAnimationFrame(drawCity);
+  }
+  drawCity();
 }
 
 // ─── PROJECT CARD INNER LINKS (don't trigger card click) ───
