@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Functional Zone Mapping | Jinchao Song</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f9f8f6; --bg2: #ffffff;
+  --text: #1a1a18; --text2: #5a5a55; --text3: #9a9a93;
+  --border: rgba(26,26,24,0.1); --border2: rgba(26,26,24,0.18);
+  --accent: #2d5a3d; --accent-light: #e8f0ea;
+  --accent2: #1d3a5c; --accent2-light: #e5edf5;
+  --radius: 10px; --radius-lg: 16px;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.7; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(249,248,246,0.95); backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 2.5rem; height: 56px;
+}
+.nav-logo { font-family: 'Lora', serif; font-size: 17px; font-weight: 500; color: var(--text); text-decoration: none; }
+.back-link { font-size: 13px; color: var(--text2); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+.back-link:hover { color: var(--text); }
+
+/* HEADER */
+.project-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 4rem 2.5rem 2.5rem;
+}
+.project-eyebrow {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-light);
+  padding: 4px 12px; border-radius: 20px; display: inline-block;
+  margin-bottom: 1.25rem; font-weight: 500;
+}
+.project-title {
+  font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400; letter-spacing: -0.02em; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.project-subtitle {
+  font-size: 17px; color: var(--text2); line-height: 1.6;
+  max-width: 700px; margin-bottom: 2rem;
+}
+.project-meta {
+  display: flex; gap: 2.5rem; padding: 1.25rem 0;
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  font-size: 13px;
+}
+.meta-item { }
+.meta-label { color: var(--text3); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+.meta-value { color: var(--text); font-weight: 500; }
+
+/* HERO IMAGE */
+.hero-image-wrap {
+  max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
+}
+.hero-image {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1e3a5c 0%, #0d1b2e 100%);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); font-size: 13px;
+}
+.hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* CONTENT */
+.project-content {
+  max-width: 720px; margin: 0 auto;
+  padding: 4rem 2.5rem;
+}
+.content-section { margin-bottom: 3rem; }
+.section-h2 {
+  font-family: 'Lora', serif; font-size: 1.4rem;
+  font-weight: 400; margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.content-section p { color: var(--text2); margin-bottom: 1rem; font-size: 15px; }
+
+/* FIGURE */
+.figure {
+  margin: 2.5rem 0;
+}
+.figure-img {
+  width: 100%; border-radius: var(--radius); overflow: hidden;
+  border: 0.5px solid var(--border); background: var(--bg2);
+  aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+  color: var(--text3); font-size: 12px;
+}
+.figure-img img { width: 100%; height: 100%; object-fit: cover; }
+.figure-caption {
+  font-size: 12px; color: var(--text3); text-align: center;
+  margin-top: 0.75rem; font-style: italic;
+}
+
+/* ANIMATED SVG ZONE GRID */
+.demo-viz {
+  margin: 2.5rem 0;
+  background: #0d1b2e; border-radius: var(--radius);
+  padding: 2rem; display: flex; align-items: center; justify-content: center;
+}
+.demo-viz canvas { width: 100%; max-width: 600px; aspect-ratio: 16/9; }
+
+/* RESULTS GRID */
+.results-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin: 2rem 0;
+}
+.result-card {
+  background: var(--bg2); border: 0.5px solid var(--border);
+  border-radius: var(--radius); padding: 1.25rem; text-align: center;
+}
+.result-num {
+  font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 500;
+  color: var(--accent); display: block; margin-bottom: 4px;
+}
+.result-label { font-size: 12px; color: var(--text2); }
+
+/* LINKS */
+.project-links {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 2rem;
+  padding-top: 2rem; border-top: 0.5px solid var(--border);
+}
+.btn-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--radius);
+  border: 0.5px solid var(--border2); font-size: 13px;
+  color: var(--text2); text-decoration: none; transition: all 0.2s;
+}
+.btn-link:hover { background: var(--bg2); color: var(--text); }
+.btn-link.primary { background: var(--text); color: var(--bg); border: none; }
+.btn-link.primary:hover { opacity: 0.85; }
+
+/* FOOTER NAV */
+.project-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between;
+  max-width: 900px; margin: 0 auto;
+}
+.next-prev { font-size: 13px; color: var(--text2); text-decoration: none; }
+.next-prev:hover { color: var(--text); }
+.next-prev .label { display: block; font-size: 11px; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+
+@media (max-width: 768px) {
+  .project-meta { flex-wrap: wrap; gap: 1.25rem; }
+  .results-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Jinchao Song</a>
+  <a class="back-link" href="index.html">← Back to projects</a>
+</nav>
+
+<!-- PROJECT HEADER -->
+<header class="project-hero">
+  <span class="project-eyebrow">Remote Sensing</span>
+  <h1 class="project-title">Urban Functional Zone Mapping</h1>
+  <p class="project-subtitle">
+    Integrating very-high-resolution satellite imagery with points of interest data
+    to delineate fine-grained urban functional zones across Chinese cities.
+  </p>
+  <div class="project-meta">
+    <div class="meta-item">
+      <p class="meta-label">Year</p>
+      <p class="meta-value">2018</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Study Area</p>
+      <p class="meta-value">Xiamen, China</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Methods</p>
+      <p class="meta-value">VHR Imagery, POI, Random Forest</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Citations</p>
+      <p class="meta-value">134+</p>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="hero-image-wrap">
+  <div class="hero-image">
+    <!-- 替换为你的真实项目图片 -->
+    <span>[ Project Hero Image — replace with your actual figure ]</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="project-content">
+
+  <section class="content-section">
+    <h2 class="section-h2">Background</h2>
+    <p>Urban functional zones (UFZs) are fundamental units that reflect the socio-economic activities and physical structures of cities. Accurate mapping of UFZs is critical for sustainable urban planning, transportation modeling, and environmental management.</p>
+    <p>However, traditional remote sensing approaches struggle to capture the complex social functions of urban land. This project introduces a novel framework that fuses physical attributes from very-high-resolution (VHR) satellite imagery with social attributes from points of interest (POI) data.</p>
+  </section>
+
+  <!-- DEMO VISUALIZATION -->
+  <div class="demo-viz">
+    <canvas id="demoCanvas"></canvas>
+  </div>
+  <p class="figure-caption">Animated visualization of urban zone classification</p>
+
+  <section class="content-section">
+    <h2 class="section-h2">Methodology</h2>
+    <p>The framework consists of three steps: (1) image segmentation using object-based methods, (2) POI density and type aggregation within each segment, and (3) random forest classification to assign functional zone labels.</p>
+    <p>We applied this method to Xiamen, China, classifying urban land into seven functional categories: residential, commercial, industrial, public service, transportation, green space, and mixed use.</p>
+
+    <div class="figure">
+      <div class="figure-img">
+        <span>[ Methodology Diagram — replace with your figure ]</span>
+      </div>
+      <p class="figure-caption">Figure 1. Workflow of the integrated UFZ mapping framework.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-h2">Key Results</h2>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-num">87%</span>
+        <span class="result-label">Overall Accuracy</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num">7</span>
+        <span class="result-label">Functional Categories</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num">10m</span>
+        <span class="result-label">Spatial Resolution</span>
+      </div>
+    </div>
+
+    <p>Our approach achieved an overall classification accuracy of 87%, significantly outperforming methods that use VHR imagery or POI data alone. The integrated framework better captures the heterogeneity of urban functions.</p>
+
+    <div class="figure">
+      <div class="figure-img">
+        <span>[ Result Map — replace with your figure ]</span>
+      </div>
+      <p class="figure-caption">Figure 2. Final UFZ classification map of Xiamen, China.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-h2">Impact</h2>
+    <p>This work has been cited 134+ times and influenced subsequent research on urban land use classification, smart cities, and urban planning support systems. The methodology has been adopted by other researchers studying cities in Europe, Africa, and Asia.</p>
+  </section>
+
+  <div class="project-links">
+    <a class="btn-link primary" href="https://www.mdpi.com/2072-4292/10/11/1737" target="_blank">Read Paper ↗</a>
+    <a class="btn-link" href="#" target="_blank">Dataset</a>
+    <a class="btn-link" href="#" target="_blank">Code on GitHub</a>
+  </div>
+
+</div>
+
+<!-- FOOTER NAV -->
+<div class="project-footer">
+  <a class="next-prev" href="index.html">
+    <span class="label">← All Projects</span>
+    Back to overview
+  </a>
+  <a class="next-prev" href="project-2.html" style="text-align:right;">
+    <span class="label">Next Project →</span>
+    Building Density & LST
+  </a>
+</div>
+
+<script>
+// Animated zone grid demo
+const canvas = document.getElementById('demoCanvas');
+canvas.width = 1200; canvas.height = 675;
+const ctx = canvas.getContext('2d');
+const zones = [
+  {x:60, y:60, w:240, h:160, c:'#1e4d8c', l:'Residential'},
+  {x:320, y:60, w:180, h:160, c:'#8b2020', l:'Commercial'},
+  {x:520, y:60, w:300, h:160, c:'#1a5c30', l:'Industrial'},
+  {x:840, y:60, w:300, h:160, c:'#3d1a5c', l:'Transit'},
+  {x:60, y:240, w:380, h:240, c:'#2d4a1e', l:'Green Space'},
+  {x:460, y:240, w:300, h:240, c:'#5c3d1a', l:'Mixed Use'},
+  {x:780, y:240, w:360, h:240, c:'#5c1a5c', l:'Public Service'},
+  {x:60, y:500, w:540, h:140, c:'#1e4d8c', l:'Residential'},
+  {x:620, y:500, w:520, h:140, c:'#8b5c20', l:'Commercial'},
+];
+let pulseT = 0;
+function draw() {
+  ctx.fillStyle = '#0d1b2e';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  zones.forEach((z, i) => {
+    const pulse = 0.7 + Math.sin(pulseT + i * 0.5) * 0.15;
+    ctx.fillStyle = z.c;
+    ctx.globalAlpha = pulse;
+    ctx.fillRect(z.x, z.y, z.w, z.h);
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(z.x, z.y, z.w, z.h);
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.font = '14px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(z.l, z.x + z.w/2, z.y + z.h/2 + 4);
+  });
+  pulseT += 0.02;
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
