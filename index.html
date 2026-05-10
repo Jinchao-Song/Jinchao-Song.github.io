@@ -139,6 +139,53 @@ nav {
 .pub-cite { display: flex; align-items: flex-start; padding-top: 2px; }
 .highly-cited { font-size: 10px; background: var(--amber-light); color: var(--amber); padding: 2px 8px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
 
+
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.hobby-card {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.hobby-card:hover { transform: translateY(-2px); }
+.hobby-large { grid-column: span 2; grid-row: span 2; }
+.hobby-media {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  background: linear-gradient(135deg, #2a3548, #1a2235);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hobby-large .hobby-media { aspect-ratio: 1.5/1; }
+.hobby-media img, .hobby-media video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.hobby-placeholder {
+  color: rgba(255,255,255,0.55);
+  font-size: 14px; text-align: center; padding: 1rem;
+}
+.hobby-placeholder small { font-size: 11px; opacity: 0.6; }
+.hobby-media .video-placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0d2a1e, #0d1a2e);
+}
+.hobby-info { padding: 0.875rem 1.25rem 1.125rem; }
+.hobby-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+.hobby-meta { font-size: 12px; color: var(--text3); }
+
+@media (max-width: 768px) {
+  .hobby-grid { grid-template-columns: 1fr 1fr; }
+  .hobby-large { grid-column: span 2; grid-row: auto; }
+}
+
 /* VIDEO */
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .video-card { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.2s; }
@@ -186,7 +233,7 @@ footer span { font-size: 12px; color: var(--text3); }
     <li><a onclick="showPanel('about')"     data-panel="about"         data-en="About"         data-zh="关于" class="active">About</a></li>
     <li><a onclick="showPanel('research')"  data-panel="research"      data-en="Research"      data-zh="研究">Research</a></li>
     <li><a onclick="showPanel('publications')" data-panel="publications" data-en="Publications" data-zh="论文">Publications</a></li>
-    <li><a onclick="showPanel('video')"     data-panel="video"         data-en="Videos"        data-zh="视频">Videos</a></li>
+    <li><a onclick="showPanel('video')"     data-panel="video"         data-en="Beyond Research" data-zh="研究之外">Beyond Research</a></li>
   </ul>
   <button class="lang-toggle" id="langBtn">中文</button>
 </nav>
@@ -286,30 +333,68 @@ footer span { font-size: 12px; color: var(--text3); }
   <div class="panel right" id="panel-video">
     <div class="panel-inner">
       <div class="section-header">
-        <h2 class="section-title" data-en="Research Videos" data-zh="研究视频">Research Videos</h2>
-        <span class="section-sub" data-en="Demos & presentations" data-zh="演示与报告">Demos & presentations</span>
+        <h2 class="section-title" data-en="Beyond Research" data-zh="研究之外">Beyond Research</h2>
+        <span class="section-sub" data-en="Drone photography · Travel · Life" data-zh="无人机摄影 · 旅行 · 生活">Drone photography · Travel · Life</span>
       </div>
-      <div class="video-grid">
-        <div class="video-card">
-          <div class="video-wrapper">
+      <div class="hobby-grid">
+        <!-- Drone photo 1 (large) -->
+        <div class="hobby-card hobby-large">
+          <div class="hobby-media">
+            <span class="hobby-placeholder">📷 Drone Photo 1<br><small>upload as hobby-1.jpg</small></span>
+          </div>
+          <div class="hobby-info">
+            <p class="hobby-title" data-en="Aerial Landscape" data-zh="航拍风光">Aerial Landscape</p>
+            <p class="hobby-meta" data-en="Drone photography" data-zh="无人机摄影">Drone photography</p>
+          </div>
+        </div>
+
+        <!-- Drone video -->
+        <div class="hobby-card">
+          <div class="hobby-media">
             <div class="video-placeholder" onclick="loadVideo(this,'YOUR_VIDEO_ID_1')">
               <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-              <span data-en="Urban Functional Zone Mapping Demo" data-zh="城市功能区制图演示">Urban Functional Zone Mapping Demo</span>
+              <span data-en="Drone Flight Video" data-zh="无人机飞行视频">Drone Flight Video</span>
             </div>
           </div>
-          <div class="video-info"><p class="video-title" data-en="Urban Functional Zone Mapping" data-zh="城市功能区制图">Urban Functional Zone Mapping</p><p class="video-meta" data-en="Conference presentation · 2022" data-zh="学术报告 · 2022">Conference presentation · 2022</p></div>
+          <div class="hobby-info">
+            <p class="hobby-title" data-en="Flying Above" data-zh="俯瞰之眼">Flying Above</p>
+            <p class="hobby-meta" data-en="Drone video" data-zh="无人机视频">Drone video</p>
+          </div>
         </div>
-        <div class="video-card">
-          <div class="video-wrapper">
-            <div class="video-placeholder" onclick="loadVideo(this,'YOUR_VIDEO_ID_2')">
-              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-              <span data-en="Traffic Pattern Analysis Visualization" data-zh="交通模式分析可视化">Traffic Pattern Analysis Visualization</span>
-            </div>
+
+        <!-- Photo 2 -->
+        <div class="hobby-card">
+          <div class="hobby-media">
+            <span class="hobby-placeholder">📷 Photo 2<br><small>upload as hobby-2.jpg</small></span>
           </div>
-          <div class="video-info"><p class="video-title" data-en="Traffic Congestion Spatio-temporal Patterns" data-zh="交通拥堵时空模式分析">Traffic Congestion Spatio-temporal Patterns</p><p class="video-meta" data-en="Research demo · 2021" data-zh="研究演示 · 2021">Research demo · 2021</p></div>
+          <div class="hobby-info">
+            <p class="hobby-title" data-en="Travel Moments" data-zh="旅途瞬间">Travel Moments</p>
+            <p class="hobby-meta" data-en="Photography" data-zh="摄影">Photography</p>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="hobby-card">
+          <div class="hobby-media">
+            <span class="hobby-placeholder">📷 Photo 3<br><small>upload as hobby-3.jpg</small></span>
+          </div>
+          <div class="hobby-info">
+            <p class="hobby-title" data-en="Outdoor Life" data-zh="户外生活">Outdoor Life</p>
+            <p class="hobby-meta" data-en="Photography" data-zh="摄影">Photography</p>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="hobby-card">
+          <div class="hobby-media">
+            <span class="hobby-placeholder">📷 Photo 4<br><small>upload as hobby-4.jpg</small></span>
+          </div>
+          <div class="hobby-info">
+            <p class="hobby-title" data-en="Daily View" data-zh="日常视角">Daily View</p>
+            <p class="hobby-meta" data-en="Photography" data-zh="摄影">Photography</p>
+          </div>
         </div>
       </div>
-      <p style="font-size:12px;color:var(--text3);margin-top:1rem;" data-en="💡 Replace YOUR_VIDEO_ID_1 / _2 with your actual YouTube video IDs." data-zh="💡 将 YOUR_VIDEO_ID_1 / _2 替换为你实际的 YouTube 视频 ID。">💡 Replace YOUR_VIDEO_ID_1 / _2 with your actual YouTube video IDs.</p>
     </div>
   </div>
 
