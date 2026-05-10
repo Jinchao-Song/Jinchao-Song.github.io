@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Building Material Stocks | Jinchao Song</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #eef0f4; --bg2: #ffffff;
+  --text: #1a1a18; --text2: #3d3d3a; --text3: #6a6a65;
+  --border: rgba(26,26,24,0.1); --border2: rgba(26,26,24,0.18);
+  --accent: #2d5a3d; --accent-light: #e8f0ea;
+  --accent2: #1d3a5c; --accent2-light: #e5edf5;
+  --coral: #a04a2a; --coral-light: #fbe9e2;
+  --radius: 10px; --radius-lg: 16px;
+}
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(238,240,244,0.92); backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 2.5rem; height: 56px;
+}
+.nav-logo { font-family: 'Lora', serif; font-size: 17px; font-weight: 500; color: var(--text); text-decoration: none; }
+.back-link { font-size: 14px; color: var(--text2); text-decoration: none; }
+.back-link:hover { color: var(--text); }
+
+.project-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 4rem 2.5rem 2rem;
+}
+.project-eyebrow {
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--coral); background: var(--coral-light);
+  padding: 4px 12px; border-radius: 20px; display: inline-block;
+  margin-bottom: 1.25rem; font-weight: 500;
+}
+.project-title {
+  font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 400; letter-spacing: -0.02em; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.project-subtitle {
+  font-size: 16px; color: var(--text2); line-height: 1.6;
+  max-width: 720px;
+}
+
+.gallery {
+  max-width: 800px; margin: 0 auto;
+  padding: 1rem 2.5rem 2rem;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+}
+.gallery-item {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.gallery-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #f5e6dc 0%, #faf0ec 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text3); font-size: 12px;
+  overflow: hidden;
+}
+.gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-caption { padding: 1rem 1.25rem; }
+.gallery-caption h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.gallery-caption p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+.references {
+  max-width: 900px; margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+}
+.references h2 {
+  font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400;
+  margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.ref-item {
+  display: grid; grid-template-columns: 60px 1fr; gap: 1.25rem;
+  padding: 1.25rem 0; border-bottom: 0.5px solid var(--border);
+  align-items: baseline;
+}
+.ref-year { font-family: 'Lora', serif; font-size: 14px; color: var(--text2); }
+.ref-title { font-size: 14px; font-weight: 500; line-height: 1.4; margin-bottom: 4px; }
+.ref-title a { color: inherit; text-decoration: none; }
+.ref-title a:hover { color: var(--accent2); }
+.ref-authors { font-size: 13px; color: var(--text3); margin-bottom: 2px; }
+.ref-venue { font-size: 13px; color: var(--text2); font-style: italic; }
+
+footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between;
+  max-width: 900px; margin: 0 auto;
+  background: rgba(255,255,255,0.4);
+}
+footer span { font-size: 13px; color: var(--text3); }
+
+@media (max-width: 768px) {
+  .gallery { grid-template-columns: 1fr; padding: 1rem 1.5rem 2rem; }
+  nav, .project-hero, .references { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Jinchao Song</a>
+  <a class="back-link" href="index.html">← Back</a>
+</nav>
+
+<header class="project-hero">
+  <span class="project-eyebrow">Resource & Sustainability</span>
+  <h1 class="project-title">Global Building Material Stocks</h1>
+  <p class="project-subtitle">
+    Quantifying global stocks of steel, aluminum, cement, and other building materials at fine spatial resolution by integrating deep learning with remote sensing, to inform circular construction and low-carbon transitions.
+  </p>
+</header>
+
+<!-- Related Publications -->
+<section class="references">
+  <h2>In Review</h2>
+
+  <div class="ref-item">
+    <div class="ref-year">2025</div>
+    <div>
+      <p class="ref-title">Weighing the world's over 600 million buildings reveals stark global disparities and impending material demands in the Global South</p>
+      <p class="ref-authors"><strong>J Song</strong> et al.</p>
+      <p class="ref-venue">Under review</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:3rem;">Related Publications</h2>
+
+  <div class="ref-item">
+    <div class="ref-year">2025</div>
+    <div>
+      <p class="ref-title"><a href="https://pubs.acs.org/doi/full/10.1021/acs.est.5c05684" target="_blank">Spatiotemporal Characteristics of Global Building Material Intensity Revealed for Circular and Low-Carbon Construction</a></p>
+      <p class="ref-authors">Q Liu, X Ouyang, W Zhu, K Sun, X Li, Y Li, <strong>J Song</strong>, W Chen, G Liu</p>
+      <p class="ref-venue">Environmental Science & Technology 59 (46), 24786–24796</p>
+    </div>
+  </div>
+
+  <div class="ref-item">
+    <div class="ref-year">2025</div>
+    <div>
+      <p class="ref-title"><a href="https://www.nature.com/articles/s41597-025-05618-0" target="_blank">A global dataset for steel, aluminum and cement in-use stocks at 500 m gridded level 2000–2019</a></p>
+      <p class="ref-authors">K Sun, Q Li, M Dai, H Guo, Q Liu, <strong>J Song</strong>, Z Chen, SRB Gummidi, W Chen, ...</p>
+      <p class="ref-venue">Scientific Data 12 (1), 1580</p>
+    </div>
+  </div>
+
+  <div class="ref-item">
+    <div class="ref-year">2025</div>
+    <div>
+      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S266649842500016X" target="_blank">Urban fabric decoded: High-precision building material identification via deep learning and remote sensing</a></p>
+      <p class="ref-authors">K Sun, Q Li, Q Liu, <strong>J Song</strong>, M Dai, X Qian, SRB Gummidi, B Yu, F Creutzig, G Liu</p>
+      <p class="ref-venue">Environmental Science and Ecotechnology 24, 100538</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <span>© 2026 Jinchao Song · University of Michigan</span>
+  <a class="back-link" href="index.html" style="font-size:13px;">← All projects</a>
+</footer>
+
+</body>
+</html>
