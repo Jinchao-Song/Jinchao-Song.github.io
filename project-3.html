@@ -108,23 +108,27 @@ footer span { font-size: 13px; color: var(--text3); }
   .gallery { grid-template-columns: 1fr; padding: 1rem 1.5rem 2rem; }
   nav, .project-hero, .references { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
+
+:focus-visible { outline: 2px solid #1d3a5c; outline-offset: 5px; }
+@media(max-width:480px){.ref-item{grid-template-columns:1fr;gap:.25rem}footer{flex-direction:column;gap:1rem;padding:1.5rem}.project-title{overflow-wrap:anywhere}}
 </style>
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="index.html">Jinchao Song</a>
-  <a class="back-link" href="index.html">← Back</a>
+  <a class="back-link" href="index.html#research">← Back</a>
 </nav>
 
 <header class="project-hero">
   <span class="project-eyebrow">Thermal Environment & Urban Form</span>
   <h1 class="project-title">Urban Heat Island</h1>
   <p class="project-subtitle">
-    Quantifying how building density and urban form shape land surface temperature across 36 Chinese cities, revealing the spatial patterns and determinants behind the urban heat island effect.
+    Quantifying how building density and urban form relate to land surface temperature across Chinese cities, revealing spatial patterns and their determinants.
   </p>
 </header>
 
+<figure style="max-width:900px;margin:0 auto;padding:1rem 2.5rem 2rem"><img src="heat-map.gif" alt="Animated global thermal environment visualization" width="768" height="431" style="display:block;width:100%;height:auto;border-radius:16px"><figcaption style="font-size:12px;color:var(--text2);margin-top:.6rem">Global thermal environment visualization</figcaption></figure>
 <!-- Result Gallery -->
 <div class="gallery">
   <div class="gallery-item">
@@ -155,7 +159,7 @@ footer span { font-size: 13px; color: var(--text3); }
   <div class="ref-item">
     <div class="ref-year">2020</div>
     <div>
-      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0169204619312526" target="_blank">Effects of building density on land surface temperature in China: Spatial patterns and determinants</a></p>
+      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0169204619312526" target="_blank" rel="noopener noreferrer">Effects of building density on land surface temperature in China: Spatial patterns and determinants</a></p>
       <p class="ref-authors"><strong>J Song</strong>, W Chen, J Zhang, K Huang, B Hou, AV Prishchepov</p>
       <p class="ref-venue">Landscape and Urban Planning 198, 103794</p>
     </div>
@@ -166,7 +170,7 @@ footer span { font-size: 13px; color: var(--text3); }
 
 <footer>
   <span>© 2026 Jinchao Song · University of Michigan</span>
-  <a class="back-link" href="index.html" style="font-size:13px;">← All projects</a>
+  <a class="back-link" href="index.html#research" style="font-size:13px;">← All projects</a>
 </footer>
 
 </body>

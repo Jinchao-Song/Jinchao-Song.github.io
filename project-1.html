@@ -130,13 +130,16 @@ footer span { font-size: 13px; color: var(--text3); }
   .gallery { grid-template-columns: 1fr; padding: 1rem 1.5rem 2rem; }
   nav, .project-hero, .references { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
+
+:focus-visible { outline: 2px solid #1d3a5c; outline-offset: 5px; }
+@media(max-width:480px){.ref-item{grid-template-columns:1fr;gap:.25rem}footer{flex-direction:column;gap:1rem;padding:1.5rem}.project-title{overflow-wrap:anywhere}}
 </style>
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="index.html">Jinchao Song</a>
-  <a class="back-link" href="index.html">← Back</a>
+  <a class="back-link" href="index.html#research">← Back</a>
 </nav>
 
 <header class="project-hero">
@@ -197,7 +200,7 @@ footer span { font-size: 13px; color: var(--text3); }
   <div class="ref-item">
     <div class="ref-year">2018</div>
     <div>
-      <p class="ref-title"><a href="https://www.mdpi.com/2072-4292/10/11/1737" target="_blank">Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China</a></p>
+      <p class="ref-title"><a href="https://www.mdpi.com/2072-4292/10/11/1737" target="_blank" rel="noopener noreferrer">Mapping urban functional zones by integrating very high spatial resolution remote sensing imagery and points of interest: A case study of Xiamen, China</a></p>
       <p class="ref-authors"><strong>J Song</strong>, T Lin, X Li, AV Prishchepov</p>
       <p class="ref-venue">Remote Sensing 10 (11), 1737</p>
     </div>
@@ -206,7 +209,7 @@ footer span { font-size: 13px; color: var(--text3); }
   <div class="ref-item">
     <div class="ref-year">2019</div>
     <div>
-      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0169204619301513" target="_blank">Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach</a></p>
+      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0169204619301513" target="_blank" rel="noopener noreferrer">Monitoring finer-scale population density in urban functional zones: A remote sensing data fusion approach</a></p>
       <p class="ref-authors"><strong>J Song</strong>, X Tong, L Wang, C Zhao, AV Prishchepov</p>
       <p class="ref-venue">Landscape and Urban Planning 190, 103580</p>
     </div>
@@ -216,7 +219,7 @@ footer span { font-size: 13px; color: var(--text3); }
 
 <footer>
   <span>© 2026 Jinchao Song · University of Michigan</span>
-  <a class="back-link" href="index.html" style="font-size:13px;">← All projects</a>
+  <a class="back-link" href="index.html#research" style="font-size:13px;">← All projects</a>
 </footer>
 
 </body>
