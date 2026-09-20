@@ -107,13 +107,16 @@ footer span { font-size: 13px; color: var(--text3); }
   .gallery { grid-template-columns: 1fr; padding: 1rem 1.5rem 2rem; }
   nav, .project-hero, .references { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
+
+:focus-visible { outline: 2px solid #1d3a5c; outline-offset: 5px; }
+@media(max-width:480px){.ref-item{grid-template-columns:1fr;gap:.25rem}footer{flex-direction:column;gap:1rem;padding:1.5rem}.project-title{overflow-wrap:anywhere}}
 </style>
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="index.html">Jinchao Song</a>
-  <a class="back-link" href="index.html">← Back</a>
+  <a class="back-link" href="index.html#research">← Back</a>
 </nav>
 
 <header class="project-hero">
@@ -138,7 +141,7 @@ footer span { font-size: 13px; color: var(--text3); }
 
   <div class="gallery-item">
     <div class="gallery-img" style="background:#000;">
-      <video src="vehicle-emissions.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+      <video src="vehicle-emissions.mp4" autoplay controls loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
     </div>
     <div class="gallery-caption">
       <h3>Vehicle Emissions</h3>
@@ -154,7 +157,7 @@ footer span { font-size: 13px; color: var(--text3); }
   <div class="ref-item">
     <div class="ref-year">2019</div>
     <div>
-      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0198971519301218" target="_blank">Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques</a></p>
+      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0198971519301218" target="_blank" rel="noopener noreferrer">Mapping spatio-temporal patterns and detecting the factors of traffic congestion with multi-source data fusion and mining techniques</a></p>
       <p class="ref-authors"><strong>J Song</strong>, C Zhao, S Zhong, TAS Nielsen, AV Prishchepov</p>
       <p class="ref-venue">Computers, Environment and Urban Systems 77, 101364</p>
     </div>
@@ -163,8 +166,8 @@ footer span { font-size: 13px; color: var(--text3); }
   <div class="ref-item">
     <div class="ref-year">2019</div>
     <div>
-      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0959652619327519" target="_blank">Spatio-temporal patterns of traffic-related air pollutant emissions in different urban functional zones estimated by real-time video and deep learning technique</a></p>
-      <p class="ref-authors"><strong>J Song</strong>, C Zhao, S Zhong, X Li, AV Prishchepov</p>
+      <p class="ref-title"><a href="https://www.sciencedirect.com/science/article/pii/S0959652619327519" target="_blank" rel="noopener noreferrer">Spatio-temporal patterns of traffic-related air pollutant emissions in different urban functional zones estimated by real-time video and deep learning technique</a></p>
+      <p class="ref-authors"><strong>J Song</strong>, C Zhao, T Lin, X Li, AV Prishchepov</p>
       <p class="ref-venue">Journal of Cleaner Production 238, 117881</p>
     </div>
   </div>
@@ -173,7 +176,7 @@ footer span { font-size: 13px; color: var(--text3); }
 
 <footer>
   <span>© 2026 Jinchao Song · University of Michigan</span>
-  <a class="back-link" href="index.html" style="font-size:13px;">← All projects</a>
+  <a class="back-link" href="index.html#research" style="font-size:13px;">← All projects</a>
 </footer>
 
 </body>
