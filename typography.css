@@ -1,0 +1,26 @@
+/* Three sizes throughout the site; retain Lora headings and Inter body text. */
+:root {
+  --type-display: 36px;
+  --type-heading: 24px;
+  --type-body: 15px;
+}
+
+h1 { line-height: 1.3; }
+h2 { line-height: 1.4; }
+.eyebrow, .section-kicker, .project-eyebrow { letter-spacing: .055em; }
+.research-quotes blockquote { line-height: 1.75; }
+.research-quotes figcaption { margin-top: .8rem; }
+.coverage-header { align-items: flex-start; flex-wrap: wrap; }
+.featured-badge { white-space: normal; }
+.study-stats dt { white-space: normal; }
+
+@media (max-width: 780px) {
+  :root { --type-display: 30px; }
+  .nav-links { gap: 0 1rem; }
+}
+
+@media (max-width: 520px) {
+  .study-stats { grid-template-columns: 1fr; gap: 1rem; }
+  .study-stats > div { padding: 0; border: 0; }
+  .filter-bar { flex-wrap: wrap; }
+}
