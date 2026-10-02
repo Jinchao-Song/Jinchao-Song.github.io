@@ -12,7 +12,6 @@ h2 { line-height: 1.4; }
 .research-quotes blockquote { line-height: 1.75; }
 .research-quotes figcaption { margin-top: .8rem; }
 .coverage-header { align-items: flex-start; flex-wrap: wrap; }
-.featured-badge { white-space: normal; }
 .study-stats dt { white-space: normal; }
 
 @media (max-width: 780px) {
